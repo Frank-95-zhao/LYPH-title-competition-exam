@@ -1,25 +1,30 @@
-医师法每日50题网页 · PWA v2
+LYPH 职称竞聘题库 · PWA v3
 
-包含：
-- index.html：主页面
+功能：
+- 10 个独立题库，可按模块直接选择
+- 每轮最多 50 题，未做题优先并穿插错题
+- 单选题和多选题即时判分
+- 上一题 / 下一题按钮
+- iPhone 右滑上一题、左滑下一题
+- 错题本、分模块统计和本机学习记录
+- 独立学习计划页面，首页不显示“14天强化”
+- PWA 主屏幕安装与离线使用
+- 自动迁移旧版 doctorLawExam_v1 医师法记录
+
+文件：
+- index.html：页面结构
+- styles.css：页面样式
+- app.js：刷题、记录迁移和手势逻辑
+- data/questions.json：10 类题库数据
 - manifest.webmanifest：PWA 清单
 - sw.js：离线缓存
 - icons/：iPhone 主屏幕图标
 
-重要：
-PWA 的“添加到主屏幕”和离线缓存需要网页通过 http:// 或 https:// 访问。
-直接在 iPhone“文件”App里点开 index.html 属于 file:// 本地文件方式，Safari 不会把它当成正常可安装的网站。
+iPhone 使用：
+1. 用 Safari 打开 GitHub Pages HTTPS 地址。
+2. 点底部“分享”。
+3. 选择“添加到主屏幕”。
+4. 首次联网完整打开后，即可在断网时继续使用。
 
-推荐使用：
-1. 把整个文件夹部署到 GitHub Pages / Vercel / Netlify 任意一种静态网站托管服务。
-2. iPhone 用 Safari 打开生成的网址。
-3. Safari 底部“分享”→“添加到主屏幕”。
-4. 以后从主屏幕图标进入即可；首次正常联网加载后支持离线使用。
-
-Mac 本地测试：
-在本文件夹打开终端，运行：
-python3 -m http.server 8000
-然后 Safari 打开 http://localhost:8000
-
-数据：
-学习记录保存在浏览器 localStorage 中。v2 沿用 v1 的 doctorLawExam_v1 存储键，因此同一网址/同一浏览器下升级不会主动清除原学习数据。
+数据说明：
+学习记录只保存在当前浏览器的 localStorage 中，不会自动上传。
