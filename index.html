@@ -28,11 +28,11 @@
           <div class="overview-stats"><div><b id="homeRate">—</b><span>正确率</span></div><div><b id="homeWrong">0</b><span>待复习错题</span></div></div>
         </div>
         <div id="resumeBox" class="resume-card hidden"><div><span class="eyebrow">继续上次训练</span><b id="resumeTitle"></b><small id="resumeMeta"></small></div><button class="primary compact" data-action="resume">继续</button></div>
-        <div class="section-head"><div><h2>选择题库</h2><p>每次只练一个类别，每轮最多 50 题</p></div><span id="bankTotal" class="count-chip">— 题</span></div>
+        <div class="section-head"><div><h2>选择题库</h2><p>进入后可自由浏览该类别全部题目</p></div><span id="bankTotal" class="count-chip">— 题</span></div>
         <div id="moduleGrid" class="module-grid"></div>
       </section>
       <section id="quizView" class="view hidden">
-        <div class="quiz-toolbar"><button class="icon-btn" data-action="pause" aria-label="暂停并返回题库">‹ 题库</button><div><b id="quizModule">—</b><span id="quizCounter">第 1 / 50 题</span></div><span id="typeBadge" class="type-badge">单选</span></div>
+        <div class="quiz-toolbar"><button class="icon-btn" data-action="pause" aria-label="暂停并返回题库">‹ 题库</button><div><b id="quizModule">—</b><button id="quizCounter" class="counter-button" data-action="show-jump" aria-label="打开题号导航">第 1 / 50 题 ▾</button></div><span id="typeBadge" class="type-badge">单选</span></div>
         <div class="progress"><i id="quizProgress"></i></div>
         <article id="questionCard" class="question-card">
           <div class="question-meta"><span id="questionRef"></span><span>左右滑动切题</span></div><h2 id="questionText"></h2>
@@ -50,9 +50,18 @@
       </section>
       <section id="planView" class="view hidden">
         <button class="icon-btn back-plan" data-action="show-home">‹ 返回题库</button><div class="plan-hero"><span class="eyebrow">学习计划</span><h2>按模块逐项覆盖，错题持续回炉</h2><p>计划独立放在这里，不占用你的刷题首页。</p></div>
-        <div class="plan-list"><div><b>1</b><p><strong>先选模块</strong><span>想刷哪部分就点哪部分，十个题库互不混合。</span></p></div><div><b>2</b><p><strong>每轮 50 题</strong><span>优先安排未做题，再穿插本模块错题和复习题。</span></p></div><div><b>3</b><p><strong>多选重点复习</strong><span>列举型、职责型、禁止行为型考点优先采用多选。</span></p></div><div><b>4</b><p><strong>医疗废物最后练</strong><span>模块顺序已按你的要求设置，医疗废物管理固定排第十。</span></p></div></div>
+        <button class="primary daily-start" data-action="start-daily">开始今日 50 题</button>
+        <div class="plan-list"><div><b>1</b><p><strong>分类自由练习</strong><span>想刷哪部分就点哪部分，可在该类别全部题目中任意跳转。</span></p></div><div><b>2</b><p><strong>每日 50 题</strong><span>学习计划独立抽取 50 题，优先安排错题和未做题。</span></p></div><div><b>3</b><p><strong>错题持续回炉</strong><span>作答记录、错题和统计继续只保存在当前设备。</span></p></div><div><b>4</b><p><strong>医疗废物最后练</strong><span>模块顺序按要求设置，医疗废物管理固定排第十。</span></p></div></div>
       </section>
     </main>
+    <div id="questionNavigator" class="navigator-backdrop hidden" role="dialog" aria-modal="true" aria-label="题号导航">
+      <div class="navigator-panel">
+        <div class="navigator-head"><div><b>选择题号</b><span>未作答也可以直接跳转</span></div><button class="icon-btn" data-action="close-jump" aria-label="关闭题号导航">关闭</button></div>
+        <div class="jump-row"><input id="jumpInput" type="number" min="1" inputmode="numeric" aria-label="输入题号"><button class="primary compact" data-action="jump-go">跳转</button></div>
+        <div class="navigator-legend"><span><i class="legend-current"></i>当前</span><span><i class="legend-correct"></i>答对</span><span><i class="legend-wrong"></i>答错</span></div>
+        <div id="questionGrid" class="question-grid"></div>
+      </div>
+    </div>
     <div id="toast" class="toast"></div>
     <nav class="bottom-nav" aria-label="主导航"><button class="active" data-view="home"><span>▦</span>题库</button><button data-view="quiz"><span>✎</span>做题</button><button data-view="wrong"><span>↺</span>错题</button><button data-view="stats"><span>▥</span>统计</button></nav>
   </div>

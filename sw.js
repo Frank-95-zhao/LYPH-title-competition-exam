@@ -1,4 +1,4 @@
-const CACHE='lyph-title-competition-v4-atomic-20260817';
+const CACHE='lyph-title-competition-v5-quality-1246-20260818';
 const ASSETS=['./','./index.html','./styles.css','./app.js','./data/questions.json','./data/questions/physician.json','./data/questions/nurse.json','./data/questions/infectious.json','./data/questions/hand_hygiene.json','./data/questions/core_systems.json','./data/questions/discipline.json','./data/questions/integrity.json','./data/questions/patient_relations.json','./data/questions/fire_safety.json','./data/questions/medical_waste.json','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim()))});
